@@ -9,9 +9,18 @@
                 var stage = new createjs.Stage("demo");
                 var circle = new createjs.Shape();
                 circle.graphics.beginFill("red").drawCircle(0, 0, 50);
-                circle.x = 100;
-                circle.y = 100;
-                stage.addChild(circle);
+
+                var dragger = new createjs.Container();
+                dragger.x = dragger.y = 100;
+                dragger.addChild(circle);
+
+                stage.addChild(dragger);
+
+                dragger.on("pressmove", function (evt) {
+                    evt.currentTarget.x = evt.stageX;
+                    evt.currentTarget.y = evt.stageY;
+                    stage.update();
+                });
 
                 stage.update();
              });
