@@ -4,6 +4,7 @@
 
     var _stage;
     var _timeslots = [];
+    var _scheduledTasks = [];
 
     var hours = { start: 9, end: 17 };
 
@@ -91,6 +92,7 @@
         var width = (task.duration * sliceSize) - (2 * offsets.scheduledTask.x);
 
         var shape = new createjs.Shape();
+        shape.name = task.name;
         shape.graphics
             .beginFill(task.colorCode).drawRoundRect(x, y, width, offsets.scheduledTask.height, offsets.scheduledTask.radius)
             .beginStroke('#999999').drawRoundRect(x, y, width, offsets.scheduledTask.height, offsets.scheduledTask.radius);
@@ -104,15 +106,26 @@
         _stage.addChild(text);
 
         _stage.update();
+
+        _scheduledTasks.push(task);
     }
 
     function playAudio() {
         document.getElementById("out-of-time").play();
     }
 
+    var clear = function() {
+        for (var i in _scheduledTasks) {
+            var shape = _stage.getChildByName(_scheduledTasks[i].name);
+            _stage.removeChild(shape);
+        }
+        _scheduledTasks = [];
+    };
+
     return {
         Init: init,
-        ScheduleTask: scheduleTask
+        ScheduleTask: scheduleTask,
+        Clear: clear
     };
 
 });

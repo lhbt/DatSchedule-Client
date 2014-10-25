@@ -52,6 +52,7 @@
         _tasks.push(task);
 
         var container = new createjs.Container();
+        container.name = task.name;
 
         registerCursorEvents(container);
 
@@ -122,14 +123,23 @@
             document.body.style.cursor = 'pointer';
         });
 
-        item.on('mouseout', function (e) {
+        item.on('mouseout', function(e) {
             document.body.style.cursor = 'default';
         });
     }
 
+    var clear = function() {
+        for (var i in _tasks) {
+            var taskContainer = _stage.getChildByName(_tasks[i].name);
+            _stage.removeChild(taskContainer);
+        }
+        _tasks = [];
+    }
+
     return {
         Init: init,
-        CreateTask: createTask
+        CreateTask: createTask,
+        Clear: clear
     };
 
 });

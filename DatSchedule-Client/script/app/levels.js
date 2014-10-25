@@ -16,7 +16,7 @@
     var update = function(data) {
 
         levelbar.UpdateBar("Stress", data.gameState.stressLevel);
-        levelbar.UpdateBar("Fatigue", data.gameState.tirednessLevel);
+        levelbar.UpdateBar("Fatigue", data.gameState.fatigueLevel);
         levelbar.UpdateBar("Hunger", data.gameState.hungerLevel);
     };
 

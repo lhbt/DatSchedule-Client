@@ -9,10 +9,7 @@
             serviceUrl,
             function (data) {
                 gameId = data.id;
-                var tasks = data.currentDay.tasks;
-                for (var i in tasks) {
-                    tasklist.CreateTask(tasks[i], createCallback(tasks[i]));
-                }
+                populateTaskList(data.currentDay.tasks);
             }
         );
     };
@@ -33,11 +30,22 @@
         var serviceUrl = 'http://datschedule.apphb.com/update/'+gameId;
         $.post(serviceUrl,
             JSON.stringify(task),
-            function(data) {
+            function (data) {
+                if (data.gameState.dayIsOver) {
+                    populateTaskList(data.currentDay.tasks);
+                    timeline.Clear();
+                }
                 levels.Update(data);
             },
             'json');
     };
+    
+    var populateTaskList = function(tasks) {
+        tasklist.Clear();
+        for (var i in tasks) {
+            tasklist.CreateTask(tasks[i], createCallback(tasks[i]));
+        }
+    }
 
     return {
         Init: init
