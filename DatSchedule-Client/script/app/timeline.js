@@ -101,6 +101,7 @@
         var text = new createjs.Text();
         text.font = _taskFont;
         text.text = task.name;
+        text.name = task.name + '_text';
         text.x = x + offsets.scheduledTask.x;
         text.y = y + (offsets.scheduledTask.height / 3);
         _stage.addChild(text);
@@ -118,6 +119,8 @@
         for (var i in _scheduledTasks) {
             var shape = _stage.getChildByName(_scheduledTasks[i].name);
             _stage.removeChild(shape);
+            var text = _stage.getChildByName(_scheduledTasks[i].name + '_text');
+            _stage.removeChild(text);
         }
         _scheduledTasks = [];
     };
