@@ -1,4 +1,4 @@
-﻿define(['jquery', 'app/tasklist'], function($, tasklist) {
+﻿define(['jquery', 'app/tasklist', 'app/timeline'], function($, tasklist, timeline) {
 
     var gameId;
 
@@ -10,14 +10,18 @@
             function (data) {
                 gameId = data.id;
                 for (var i in data.tasks) {
-                    tasklist.CreateTask(data.tasks[i], taskScheduled);
+                    tasklist.CreateTask(data.tasks[i], createCallback(data.tasks[i]));
                 }
             }
         );
     };
 
-    var taskScheduled = function(evt) {
-        console.log(evt.target);
+    var createCallback = function(task) {
+        return function() { taskScheduled(task); };
+    };
+    
+    var taskScheduled = function(task) {
+        timeline.ScheduleTask(task);
     };
 
     return {

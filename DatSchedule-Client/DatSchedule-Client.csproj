@@ -42,6 +42,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="script\app\engine.js" />
     <Content Include="script\app\levels.js" />
     <Content Include="script\app\main.js" />
     <Content Include="script\app\measurements.js" />

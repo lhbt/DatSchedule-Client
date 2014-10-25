@@ -5,6 +5,8 @@
 
     var hours = { start: 9, end: 17 };
 
+    var _nextFreeSlot = hours.start;
+
     var sliceSize = measurements.timelineWidth / (hours.end - hours.start + 1);
 
     var offsets = { shape: { x: sliceSize }, text: { x: sliceSize }, spacing: { x: 4, y: 4 } };
@@ -27,10 +29,22 @@
 
     };
 
+    var drawShapeAt = function(shape, slot, fillColor) {
+        var index = slot - hours.start;
+        shape.graphics
+            .beginFill(fillColor)
+            .drawRect((index * offsets.shape.x), measurements.stageHeight - measurements.timelineHeight, sizes.shape.width, measurements.timelineHeight)
+            .endFill()
+            .beginStroke("#000000")
+            .drawRect((index * offsets.shape.x), measurements.stageHeight - measurements.timelineHeight, sizes.shape.width, measurements.timelineHeight)
+            .endFill();
+    };
+
     var createTimeslot = function(hour) {
         
         var timeslot = new createjs.Shape();
-        timeslot.graphics.beginFill("#aaaaff").beginStroke("#000000").drawRect((_timeslots.length * offsets.shape.x), measurements.stageHeight - measurements.timelineHeight, sizes.shape.width, measurements.timelineHeight);
+        timeslot.name = hour;
+        drawShapeAt(timeslot, hour, "#aaaaff");
         _stage.addChild(timeslot);
 
         var timetext = new createjs.Text();
@@ -40,10 +54,20 @@
         _stage.addChild(timetext);
         
         _timeslots.push(hour);
+
+        _stage.update();
+    };
+
+    var scheduleTask = function(task) {
+        var taskShape = _stage.getChildByName(_nextFreeSlot);
+        drawShapeAt(taskShape, _nextFreeSlot, "#aaffaa");
+        _stage.update();
+        _nextFreeSlot++;
     };
 
     return {
-        Init: init
+        Init: init,
+        ScheduleTask: scheduleTask
     };
 
 });
