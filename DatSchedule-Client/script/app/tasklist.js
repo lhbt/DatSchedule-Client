@@ -1,11 +1,34 @@
 ﻿define(['app/measurements', 'easel'], function(measurements) {
 
+    var _font = "14px Candara";
+
     var _color = "#ffaaaa";
     var _stage;
     var _tasks = [];
 
-    var offsets = { shape: { x: 10, y: 20, spacing: 3 }, text: { x: 15, y: 20, spacing: 4 } };
-    var sizes = { width: measurements.tasklistWidth - 20, height: 15 };
+    var offsets = {
+         shape: {
+             x: 10,
+             y: 25,
+             spacing: 3,
+             radius: 5
+         },
+         text: {
+             x: 15,
+             y: 25,
+             spacing: 4
+         },
+        duration: {
+            x: 160,
+            y: 25,
+            spacing: 4
+        }
+    };
+
+    var sizes = {
+        width: measurements.tasklistWidth - 20,
+        height: 20
+    };
     
     var init = function(stage) {
         _stage = stage;
@@ -31,14 +54,24 @@
         registerCursorEvents(container);
 
         var taskItem = new createjs.Shape();
-        taskItem.graphics.beginFill(task.colorCode).drawRect(offsets.shape.x, (_tasks.length * offsets.shape.y) + offsets.shape.spacing, sizes.width, sizes.height);
+        taskItem.graphics
+            .beginFill(task.colorCode).drawRoundRect(offsets.shape.x, (_tasks.length * offsets.shape.y) + offsets.shape.spacing, sizes.width, sizes.height, offsets.shape.radius)
+            .beginStroke('#999999').drawRoundRect(offsets.shape.x, (_tasks.length * offsets.shape.y) + offsets.shape.spacing, sizes.width, sizes.height, offsets.shape.radius);
         container.addChild(taskItem);
 
         var taskText = new createjs.Text();
-        taskText.text = task.name + '(' + task.duration + ')';
+        taskText.font = _font;
+        taskText.text = task.name;
         taskText.x = offsets.text.x;
         taskText.y = (_tasks.length * offsets.text.y) + offsets.text.spacing;
         container.addChild(taskText);
+
+        var durationText = new createjs.Text();
+        durationText.font = _font;
+        durationText.text = task.duration + 'hr';
+        durationText.x = offsets.duration.x;
+        durationText.y = (_tasks.length * offsets.duration.y) + offsets.duration.spacing;
+        container.addChild(durationText);
 
         var taskDisableLayer = new createjs.Shape();
         taskDisableLayer.alpha = 0.0;
