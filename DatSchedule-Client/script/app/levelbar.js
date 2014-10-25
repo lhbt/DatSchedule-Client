@@ -1,11 +1,12 @@
-﻿define(['app/helpers', 'easel'], function(helpers) {
+﻿define(['easel'], function() {
 
     var _stage;
     var _levelBars = 0;
 
-    var sizes = { x: 10, y: 200};
-    var fullBarColor = { r: 0, g: 255, b: 0 };
-    var emptyBarColor = { r: 255, g: 0, b: 0 };
+    var sizes = {
+        x: 10,
+        y: 200
+    };
 
     var createBar = function(stage, name) {
         _stage = stage;
@@ -19,26 +20,37 @@
         var bar = new createjs.Shape();
         bar.name = name;
         bar.index = _levelBars;
-        bar.graphics.beginFill("#00ff00").beginStroke("#000000").drawRect(bartext.x + 7, bartext.y - 10 - sizes.y, sizes.x, sizes.y).endStroke().endFill();
+        bar.graphics
+            .beginLinearGradientFill(["#00FF00", "#FFFF00", "#FF0000"], [0, 0.8, 1], 0, bartext.y - 10 - sizes.y, 0, bartext.y - 10)
+            .drawRect(bartext.x + 7, bartext.y - 10 - sizes.y, sizes.x, sizes.y)
+            .endFill();
         _stage.addChild(bar);
+
+        var barOutline = new createjs.Shape();
+        barOutline.graphics
+            .beginStroke("#AAAAAA")
+            .setStrokeStyle(2)
+            .drawRect(bartext.x + 7, bartext.y - 10 - sizes.y, sizes.x, sizes.y)
+            .endStroke();
+        _stage.addChild(barOutline);
 
         _stage.update();
 
         _levelBars++;
-    };
+    }
 
-    var updateBar = function(name, value) {
+    var updateBar = function (name, value) {
         var bar = _stage.getChildByName(name);
-        var barColor = helpers.LerpColor(0, 100, emptyBarColor, fullBarColor, value);
-        var color = createjs.Graphics.getRGB(barColor.r, barColor.g, barColor.b);
+        var x = 630 + (bar.index * 50) + 7;
+        var y = 290 - (sizes.y * value / 100);
+        var width = 10;
+        var height = sizes.y * value / 100;
         bar.graphics
             .clear()
-            .beginFill(color)
-            .beginStroke("#000000")
-            .drawRect(630 + (bar.index * 50) + 7, 290 - (sizes.y * value / 100), 10, sizes.y * value / 100)
-            .endStroke()
-            .endFill();
-
+            .beginLinearGradientFill(["#00FF00", "#FFFF00", "#FF0000"], [0, 0.8, 1], 0, 290 - sizes.y, 0, 290)
+            .drawRect(x, y, width, height)
+            .endFill()
+            .endStroke();
         _stage.update();
     };
 

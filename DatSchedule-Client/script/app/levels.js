@@ -5,7 +5,8 @@
     var init = function (stage) {
 
         var levels = new createjs.Shape();
-        levels.graphics.beginFill(color).drawRect(measurements.stageWidth - measurements.levelsWidth, 0, measurements.levelsWidth, measurements.stageHeight - measurements.timelineHeight);
+        levels.graphics
+            .beginFill(color).drawRect(measurements.stageWidth - measurements.levelsWidth, 0, measurements.levelsWidth, measurements.stageHeight - measurements.timelineHeight);
         stage.addChild(levels);
 
         levelbar.CreateBar(stage, "Stress");
@@ -14,7 +15,6 @@
     };
 
     var update = function(data) {
-
         levelbar.UpdateBar("Stress", data.gameState.stressLevel);
         levelbar.UpdateBar("Fatigue", data.gameState.fatigueLevel);
         levelbar.UpdateBar("Hunger", data.gameState.hungerLevel);
