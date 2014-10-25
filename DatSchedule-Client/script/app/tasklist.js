@@ -17,23 +17,22 @@
 
     var createTask = function (task, scheduledCallback) {
         _tasks.push(task);
-        
+
+        var container = new createjs.Container();
+        container.on('click', scheduledCallback);
+        registerCursorEvents(container);
+
         var taskItem = new createjs.Shape();
         taskItem.graphics.beginFill("#ffffff").drawRect(offsets.shape.x, (_tasks.length * offsets.shape.y) + offsets.shape.spacing, sizes.width, sizes.height);
-        taskItem.on('click', scheduledCallback);
-
-
-        _stage.addChild(taskItem);
+        container.addChild(taskItem);
 
         var taskText = new createjs.Text();
         taskText.text = task.name;
         taskText.x = offsets.text.x;
         taskText.y = (_tasks.length * offsets.text.y) + offsets.text.spacing;
-        _stage.addChild(taskText);
+        container.addChild(taskText);
 
-        registerCursorEvents(taskItem);
-        registerCursorEvents(taskText);
-
+        _stage.addChild(container);
         _stage.update();
     };
 
