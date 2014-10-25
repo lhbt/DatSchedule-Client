@@ -58,11 +58,13 @@
         _stage.update();
     };
 
-    var scheduleTask = function(task) {
-        var taskShape = _stage.getChildByName(_nextFreeSlot);
-        drawShapeAt(taskShape, _nextFreeSlot, "#aaffaa");
-        _stage.update();
-        _nextFreeSlot++;
+    var scheduleTask = function (task) {
+        for (var i = 0; i <= task.duration; ++i) {
+            var taskShape = _stage.getChildByName(_nextFreeSlot);
+            drawShapeAt(taskShape, _nextFreeSlot, "#aaffaa");
+            _stage.update();
+            _nextFreeSlot++;
+        }
     };
 
     return {
