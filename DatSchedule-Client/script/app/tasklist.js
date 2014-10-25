@@ -2,7 +2,6 @@
 
     var _font = "14px Candara";
 
-    var _color = "#ffaaaa";
     var _stage;
     var _tasks = [];
 
@@ -34,7 +33,7 @@
         _stage = stage;
 
         var taskList = new createjs.Shape();
-        taskList.graphics.beginFill(_color).drawRect(0, 0, measurements.tasklistWidth, measurements.tasklistHeight);
+        taskList.graphics.beginFill(measurements.backgroundColor).drawRect(0, 0, measurements.tasklistWidth, measurements.tasklistHeight);
         _stage.addChild(taskList);
     };
 

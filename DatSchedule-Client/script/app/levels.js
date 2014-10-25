@@ -1,6 +1,6 @@
 ﻿define(['app/measurements'], function(measurements) {
 
-    var color = "#aaffaa";
+    var color = measurements.backgroundColor;
 
     var init = function (stage) {
 

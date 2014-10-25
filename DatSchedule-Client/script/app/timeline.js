@@ -16,7 +16,7 @@
         _stage = stage;
 
         var timeline = new createjs.Shape();
-        timeline.graphics.beginFill("#aaaaff").drawRect(0, measurements.stageHeight - measurements.timelineHeight, measurements.stageWidth, measurements.timelineHeight);
+        timeline.graphics.beginFill(measurements.backgroundColor).drawRect(0, measurements.stageHeight - measurements.timelineHeight, measurements.stageWidth, measurements.timelineHeight);
 
         var timelineContainer = new createjs.Container();
         timelineContainer.addChild(timeline);
@@ -44,7 +44,7 @@
         
         var timeslot = new createjs.Shape();
         timeslot.name = hour;
-        drawShapeAt(timeslot, hour, "#aaaaff");
+        drawShapeAt(timeslot, hour, measurements.backgroundColor);
         _stage.addChild(timeslot);
 
         var timetext = new createjs.Text();

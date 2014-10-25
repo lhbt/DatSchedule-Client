@@ -8,7 +8,8 @@
         tasklistWidth: 200,
         tasklistHeight: 475,
         levelsWidth: 200,
-        levelsHeight: 475
+        levelsHeight: 475,
+        backgroundColor: "#E0F2F7"
     };
 
 });
