@@ -44,14 +44,8 @@
         stage.addChild(timelineContainer);
     };
 
-    var addChild = function(containerName, object) {
-        var container = timelineContainer.getChildByName(containerName);
-        container.addChild(object);
-    };
-
     return {
-        Init: init,
-        AddChild: addChild
+        Init: init
     };
 
 });
