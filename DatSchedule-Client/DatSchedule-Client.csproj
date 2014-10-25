@@ -45,6 +45,8 @@
     <Content Include="content\dat_schedule_logo.jpg" />
     <Content Include="media\out-of-time.mp3" />
     <Content Include="script\app\engine.js" />
+    <Content Include="script\app\helpers.js" />
+    <Content Include="script\app\levelbar.js" />
     <Content Include="script\app\levels.js" />
     <Content Include="script\app\main.js" />
     <Content Include="script\app\measurements.js" />
