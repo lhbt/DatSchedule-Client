@@ -16,7 +16,7 @@
 
         var header = new createjs.Text();
         header.font = _headerFont;
-        header.text = "Levels";
+        header.text = "Stats";
         header.x = measurements.stageWidth - measurements.levelsWidth + 10;
         header.y = 10;
         stage.addChild(header);
