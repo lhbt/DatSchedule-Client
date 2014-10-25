@@ -29,7 +29,7 @@
         registerCursorEvents(container);
 
         var taskItem = new createjs.Shape();
-        taskItem.graphics.beginFill("#ffffff").drawRect(offsets.shape.x, (_tasks.length * offsets.shape.y) + offsets.shape.spacing, sizes.width, sizes.height);
+        taskItem.graphics.beginFill(task.colorCode).drawRect(offsets.shape.x, (_tasks.length * offsets.shape.y) + offsets.shape.spacing, sizes.width, sizes.height);
         container.addChild(taskItem);
 
         var taskText = new createjs.Text();
