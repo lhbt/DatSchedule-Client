@@ -1,8 +1,6 @@
-﻿define(['app/levels', 'app/timeline', 'easel'], function (levels, timeline) {
+﻿define(['app/levels', 'app/timeline', 'app/tasklist', 'easel'], function (levels, timeline, tasklist) {
 
     var init = function() {
-
-        var height = 600;
 
         var stage = new createjs.Stage("demo");
         var circle = new createjs.Shape();
@@ -10,13 +8,9 @@
 
         timeline.Init(stage);
 
-        levels.Init(stage);        
+        levels.Init(stage);
 
-        var taskListWidth = 200;
-        var taskListHeight = 125;
-        var taskList = new createjs.Shape();
-        taskList.graphics.beginFill("#ffaaaa").drawRect(0, 0, taskListWidth, height - taskListHeight);
-        stage.addChild(taskList);
+        tasklist.Init(stage);
 
         var dragger = new createjs.Container();
         dragger.x = dragger.y = 100;
