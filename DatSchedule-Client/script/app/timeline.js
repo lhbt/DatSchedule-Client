@@ -123,6 +123,7 @@
             _stage.removeChild(text);
         }
         _scheduledTasks = [];
+        _nextFreeSlot = hours.start;
     };
 
     return {
