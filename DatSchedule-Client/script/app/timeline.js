@@ -58,14 +58,26 @@
         _stage.update();
     };
 
+    function nextFreeSlotIndex() {
+        return _nextFreeSlot - hours.start;
+    }
+
     var scheduleTask = function (task) {
-        for (var i = 0; i <= task.duration; ++i) {
+        if (nextFreeSlotIndex() + task.duration > _timeslots.length) {
+            playAudio();
+        }
+
+        for (var i = 0; i < task.duration; ++i) {
             var taskShape = _stage.getChildByName(_nextFreeSlot);
             drawShapeAt(taskShape, _nextFreeSlot, "#aaffaa");
             _stage.update();
             _nextFreeSlot++;
         }
     };
+
+    function playAudio() {
+        document.getElementById("out-of-time").play();
+    }
 
     return {
         Init: init,

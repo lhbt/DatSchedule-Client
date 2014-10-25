@@ -42,6 +42,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="media\out-of-time.mp3" />
     <Content Include="script\app\engine.js" />
     <Content Include="script\app\levels.js" />
     <Content Include="script\app\main.js" />
