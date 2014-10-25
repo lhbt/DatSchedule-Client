@@ -1,12 +1,11 @@
-﻿define(function() {
+﻿define(['app/measurements'], function(measurements) {
 
-    var width = 200;
     var color = "#aaffaa";
 
-    var init = function (stage, stageWidth, stageHeight, timelineHeight) {
+    var init = function (stage) {
 
         var levels = new createjs.Shape();
-        levels.graphics.beginFill(color).drawRect(stageWidth - width, 0, width, stageHeight - timelineHeight);
+        levels.graphics.beginFill(color).drawRect(measurements.stageWidth - measurements.levelsWidth, 0, measurements.levelsWidth, measurements.stageHeight - measurements.timelineHeight);
         stage.addChild(levels);
     };
 
