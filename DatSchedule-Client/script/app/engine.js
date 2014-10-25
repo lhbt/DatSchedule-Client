@@ -10,10 +10,14 @@
             function (data) {
                 gameId = data.id;
                 for (var i in data.tasks) {
-                    tasklist.CreateTask(data.tasks[i]);
+                    tasklist.CreateTask(data.tasks[i], taskScheduled);
                 }
             }
         );
+    };
+
+    var taskScheduled = function(evt) {
+        console.log(evt.target);
     };
 
     return {
