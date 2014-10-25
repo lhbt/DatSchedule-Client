@@ -3,9 +3,13 @@
     var _stage;
     var _levelBars = 0;
 
+    var _linearGradientColors = ["#00FF00", "#FFFF00", "#FF0000"];
+    var _linearGradientThresholds = [0, 0.8, 1];
+
     var sizes = {
-        x: 10,
-        y: 200
+        x: 20,
+        y: 200,
+        radius: 10
     };
 
     var createBar = function(stage, name) {
@@ -21,8 +25,8 @@
         bar.name = name;
         bar.index = _levelBars;
         bar.graphics
-            .beginLinearGradientFill(["#00FF00", "#FFFF00", "#FF0000"], [0, 0.8, 1], 0, bartext.y - 10 - sizes.y, 0, bartext.y - 10)
-            .drawRect(bartext.x + 7, bartext.y - 10 - sizes.y, sizes.x, sizes.y)
+            .beginLinearGradientFill(_linearGradientColors, _linearGradientThresholds, 0, bartext.y - 10 - sizes.y, 0, bartext.y - 10)
+            .drawRoundRect(bartext.x + 7, bartext.y - 10 - sizes.y, sizes.x, sizes.y, sizes.radius)
             .endFill();
         _stage.addChild(bar);
 
@@ -30,7 +34,7 @@
         barOutline.graphics
             .beginStroke("#AAAAAA")
             .setStrokeStyle(2)
-            .drawRect(bartext.x + 7, bartext.y - 10 - sizes.y, sizes.x, sizes.y)
+            .drawRoundRect(bartext.x + 7, bartext.y - 10 - sizes.y, sizes.x, sizes.y, sizes.radius)
             .endStroke();
         _stage.addChild(barOutline);
 
@@ -43,12 +47,12 @@
         var bar = _stage.getChildByName(name);
         var x = 630 + (bar.index * 50) + 7;
         var y = 290 - (sizes.y * value / 100);
-        var width = 10;
+        var width = sizes.x;
         var height = sizes.y * value / 100;
         bar.graphics
             .clear()
             .beginLinearGradientFill(["#00FF00", "#FFFF00", "#FF0000"], [0, 0.8, 1], 0, 290 - sizes.y, 0, 290)
-            .drawRect(x, y, width, height)
+            .drawRoundRect(x, y, width, height, sizes.radius)
             .endFill()
             .endStroke();
         _stage.update();
