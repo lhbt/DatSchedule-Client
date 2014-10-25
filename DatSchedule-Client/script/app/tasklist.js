@@ -5,7 +5,7 @@
     var _tasks = [];
 
     var offsets = { shape: { x: 10, y: 20, spacing: 3 }, text: { x: 15, y: 20, spacing: 4 } };
-    var sizes = { width: 150, height: 15 };
+    var sizes = { width: measurements.tasklistWidth - 20, height: 15 };
     
     var init = function(stage) {
         _stage = stage;
@@ -19,7 +19,13 @@
         _tasks.push(task);
 
         var container = new createjs.Container();
-        container.on('click', scheduledCallback);
+        container.on('click', function () {
+            taskDisableLayer.alpha = 0.5;
+            container.removeAllEventListeners();
+            document.body.style.cursor = 'default';
+            scheduledCallback();
+        });
+
         registerCursorEvents(container);
 
         var taskItem = new createjs.Shape();
@@ -31,6 +37,11 @@
         taskText.x = offsets.text.x;
         taskText.y = (_tasks.length * offsets.text.y) + offsets.text.spacing;
         container.addChild(taskText);
+
+        var taskDisableLayer = new createjs.Shape();
+        taskDisableLayer.alpha = 0.0;
+        taskDisableLayer.graphics.beginFill("#999999").drawRect(offsets.shape.x, (_tasks.length * offsets.shape.y) + offsets.shape.spacing, sizes.width, sizes.height);
+        container.addChild(taskDisableLayer);
 
         _stage.addChild(container);
         _stage.update();
