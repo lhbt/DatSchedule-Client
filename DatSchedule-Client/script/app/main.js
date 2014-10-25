@@ -3,7 +3,8 @@
     var init = function() {
 
         var stage = new createjs.Stage("demo");
-        
+        stage.enableMouseOver(20);
+
         timeline.Init(stage);
 
         levels.Init(stage);

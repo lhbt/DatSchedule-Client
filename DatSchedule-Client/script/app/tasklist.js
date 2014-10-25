@@ -21,6 +21,8 @@
         var taskItem = new createjs.Shape();
         taskItem.graphics.beginFill("#ffffff").drawRect(offsets.shape.x, (_tasks.length * offsets.shape.y) + offsets.shape.spacing, sizes.width, sizes.height);
         taskItem.on('click', scheduledCallback);
+
+
         _stage.addChild(taskItem);
 
         var taskText = new createjs.Text();
@@ -29,8 +31,21 @@
         taskText.y = (_tasks.length * offsets.text.y) + offsets.text.spacing;
         _stage.addChild(taskText);
 
+        registerCursorEvents(taskItem);
+        registerCursorEvents(taskText);
+
         _stage.update();
     };
+
+    function registerCursorEvents(item) {
+        item.on('mouseover', function (e) {
+            document.body.style.cursor = 'pointer';
+        });
+
+        item.on('mouseout', function (e) {
+            document.body.style.cursor = 'default';
+        });
+    }
 
     return {
         Init: init,
