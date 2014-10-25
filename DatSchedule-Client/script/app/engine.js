@@ -9,8 +9,9 @@
             serviceUrl,
             function (data) {
                 gameId = data.id;
-                for (var i in data.tasks) {
-                    tasklist.CreateTask(data.tasks[i], createCallback(data.tasks[i]));
+                var tasks = data.currentDay.tasks;
+                for (var i in tasks) {
+                    tasklist.CreateTask(tasks[i], createCallback(tasks[i]));
                 }
             }
         );
