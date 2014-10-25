@@ -42,8 +42,14 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="script\easeljs-0.7.0.min.js" />
-    <Content Include="script\jquery-1.11.1.min.js" />
+    <Content Include="script\app\levels.js" />
+    <Content Include="script\app\main.js" />
+    <Content Include="script\app\tasklist.js" />
+    <Content Include="script\app\timeline.js" />
+    <Content Include="script\lib\easeljs-0.7.0.min.js" />
+    <Content Include="script\lib\jquery-1.11.1.min.js" />
+    <Content Include="script\lib\require.js" />
+    <Content Include="script\app.js" />
     <Content Include="static\Index.html" />
     <Content Include="style\schedule.css" />
     <Content Include="Web.config" />
