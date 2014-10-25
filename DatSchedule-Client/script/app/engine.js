@@ -17,12 +17,15 @@
     };
 
     var createCallback = function(task) {
-        return function() { taskScheduled(task); };
+        return function() { return taskScheduled(task); };
     };
     
     var taskScheduled = function(task) {
-        timeline.ScheduleTask(task);
-        scheduleTaskOnServer(task);
+        var success = timeline.ScheduleTask(task);
+        if (success) {
+            scheduleTaskOnServer(task);
+        }
+        return success;
     };
 
     var scheduleTaskOnServer = function(task) {

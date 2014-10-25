@@ -65,6 +65,7 @@
     var scheduleTask = function (task) {
         if (nextFreeSlotIndex() + task.duration > _timeslots.length) {
             playAudio();
+            return false;
         }
 
         for (var i = 0; i < task.duration; ++i) {
@@ -73,6 +74,7 @@
             _stage.update();
             _nextFreeSlot++;
         }
+        return true;
     };
 
     function playAudio() {

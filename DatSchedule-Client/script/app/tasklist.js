@@ -20,10 +20,11 @@
 
         var container = new createjs.Container();
         container.on('click', function () {
-            taskDisableLayer.alpha = 0.5;
-            container.removeAllEventListeners();
-            document.body.style.cursor = 'default';
-            scheduledCallback();
+            if (scheduledCallback()) {
+                taskDisableLayer.alpha = 0.5;
+                container.removeAllEventListeners();
+                document.body.style.cursor = 'default';
+            }
         });
 
         registerCursorEvents(container);
@@ -33,7 +34,7 @@
         container.addChild(taskItem);
 
         var taskText = new createjs.Text();
-        taskText.text = task.name;
+        taskText.text = task.name + '(' + task.duration + ')';
         taskText.x = offsets.text.x;
         taskText.y = (_tasks.length * offsets.text.y) + offsets.text.spacing;
         container.addChild(taskText);
