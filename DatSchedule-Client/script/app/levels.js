@@ -1,6 +1,7 @@
 ﻿define(['app/measurements', 'app/levelbar'], function(measurements, levelbar) {
 
     var color = measurements.backgroundColor;
+    var _headerFont = "24px Candara";
 
     var init = function (stage) {
 
@@ -12,6 +13,13 @@
         levelbar.CreateBar(stage, "Stress");
         levelbar.CreateBar(stage, "Fatigue");
         levelbar.CreateBar(stage, "Hunger");
+
+        var header = new createjs.Text();
+        header.font = _headerFont;
+        header.text = "Levels";
+        header.x = measurements.stageWidth - measurements.levelsWidth + 10;
+        header.y = 10;
+        stage.addChild(header);
     };
 
     var update = function(data) {
