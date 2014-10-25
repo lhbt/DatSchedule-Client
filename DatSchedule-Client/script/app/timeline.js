@@ -1,5 +1,7 @@
 ﻿define(['app/measurements'], function(measurements) {
 
+    var _taskFont = "14px Candara";
+
     var _stage;
     var _timeslots = [];
 
@@ -44,17 +46,6 @@
             createTimeslot(i);
         }
 
-    };
-
-    var drawShapeAt = function(shape, slot, fillColor) {
-        var index = slot - hours.start;
-        shape.graphics
-            .beginFill(fillColor)
-            .drawRect((index * offsets.shape.x), measurements.stageHeight - measurements.timelineHeight, sizes.shape.width, measurements.timelineHeight)
-            .endFill()
-            .beginStroke("#000000")
-            .drawRect((index * offsets.shape.x), measurements.stageHeight - measurements.timelineHeight, sizes.shape.width, measurements.timelineHeight)
-            .endFill();
     };
 
     var createTimeslot = function(hour) {
@@ -104,6 +95,14 @@
             .beginFill(task.colorCode).drawRoundRect(x, y, width, offsets.scheduledTask.height, offsets.scheduledTask.radius)
             .beginStroke('#999999').drawRoundRect(x, y, width, offsets.scheduledTask.height, offsets.scheduledTask.radius);
         _stage.addChild(shape);
+
+        var text = new createjs.Text();
+        text.font = _taskFont;
+        text.text = task.name;
+        text.x = x + offsets.scheduledTask.x;
+        text.y = y + (offsets.scheduledTask.height / 3);
+        _stage.addChild(text);
+
         _stage.update();
     }
 
