@@ -62,7 +62,7 @@ canvas {
     margin: auto;
     position: absolute;
     top: -750px; left: 0; bottom: 0; right: 0;
-    width: 194px;
+    width: 200px;
     height: 57px;
     background-image: url(../content/dat_schedule_logo.jpg)
 }
