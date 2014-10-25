@@ -44,6 +44,7 @@
   <ItemGroup>
     <Content Include="script\easeljs-0.7.0.min.js" />
     <Content Include="static\Index.html" />
+    <Content Include="style\schedule.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -59,7 +60,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="content\" />
-    <Folder Include="style\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
