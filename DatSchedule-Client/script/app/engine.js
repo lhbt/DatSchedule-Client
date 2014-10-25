@@ -1,4 +1,4 @@
-﻿define(['jquery', 'app/tasklist', 'app/timeline'], function($, tasklist, timeline) {
+﻿define(['jquery', 'app/tasklist', 'app/timeline', 'app/levels'], function($, tasklist, timeline, levels) {
 
     var gameId;
 
@@ -22,6 +22,17 @@
     
     var taskScheduled = function(task) {
         timeline.ScheduleTask(task);
+        scheduleTaskOnServer(task);
+    };
+
+    var scheduleTaskOnServer = function(task) {
+        var serviceUrl = 'http://datschedule.apphb.com/update/'+gameId;
+        $.post(serviceUrl,
+            JSON.stringify(task),
+            function(data) {
+                levels.Update(data);
+            },
+            'json');
     };
 
     return {

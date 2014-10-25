@@ -9,7 +9,12 @@
         stage.addChild(levels);
     };
 
+    var update = function(data) {
+        console.log(data);
+    };
+
     return {
-        Init: init
+        Init: init,
+        Update: update
     };
 });
