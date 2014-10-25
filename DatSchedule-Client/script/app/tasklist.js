@@ -24,6 +24,7 @@
                 taskDisableLayer.alpha = 0.5;
                 container.removeAllEventListeners();
                 document.body.style.cursor = 'default';
+                _stage.update();
             }
         });
 
