@@ -52,8 +52,17 @@ table {
 /* SCHEDULE STYLE BELOW HERE, PLEASE */
 
 canvas {
-  margin: auto;
-  position: absolute;
-  top: 0; left: 0; bottom: 0; right: 0;
-  border: 1px solid lightgrey;
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    border: 1px solid lightgrey;
+}
+
+#heading {
+    margin: auto;
+    position: absolute;
+    top: -750px; left: 0; bottom: 0; right: 0;
+    width: 194px;
+    height: 57px;
+    background-image: url(../content/dat_schedule_logo.jpg)
 }
