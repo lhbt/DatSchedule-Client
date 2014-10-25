@@ -1,20 +1,21 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
-<head>
-  <script src="http://code.createjs.com/easeljs-0.7.0.min.js"></script>
-  <script>
-    function init() {
-      var stage = new createjs.Stage("demo");
-      var circle = new createjs.Shape();
-      circle.graphics.beginFill("red").drawCircle(0, 0, 50);
-      circle.x = 100;
-      circle.y = 100;
-      stage.addChild(circle);
+    <head>
+        <title>Harry Gall Presents...</title>
+        <script src="../script/easeljs-0.7.0.min.js"></script>
+        <script>
+            function init() {
+                var stage = new createjs.Stage("demo");
+                var circle = new createjs.Shape();
+                circle.graphics.beginFill("red").drawCircle(0, 0, 50);
+                circle.x = 100;
+                circle.y = 100;
+                stage.addChild(circle);
 
-      stage.update();
-    }
-  </script>
-</head>
+                stage.update();
+            }
+        </script>
+    </head>
 <body onLoad="init();">
   <canvas id="demo" width="800" height="600">
     <marquee>Your browser does not support canvas! :(</marquee>

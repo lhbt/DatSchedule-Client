@@ -42,6 +42,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="script\easeljs-0.7.0.min.js" />
     <Content Include="static\Index.html" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -58,7 +59,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="content\" />
-    <Folder Include="script\" />
     <Folder Include="style\" />
   </ItemGroup>
   <PropertyGroup>
