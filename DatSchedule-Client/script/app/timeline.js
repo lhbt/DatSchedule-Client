@@ -41,10 +41,14 @@
     };
 
     var createTimeslot = function(hour) {
-        
         var timeslot = new createjs.Shape();
         timeslot.name = hour;
-        drawShapeAt(timeslot, hour, measurements.backgroundColor);
+        //drawShapeAt(timeslot, hour, measurements.backgroundColor);
+        var index = hour - hours.start;
+        timeslot.graphics
+            .beginStroke('#000000')
+            .moveTo((index * offsets.shape.x)-1, measurements.stageHeight - measurements.timelineHeight)
+            .lineTo((index * offsets.shape.x)-1, measurements.stageHeight);
         _stage.addChild(timeslot);
 
         var timetext = new createjs.Text();
