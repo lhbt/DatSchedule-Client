@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="script\easeljs-0.7.0.min.js" />
+    <Content Include="script\jquery-1.11.1.min.js" />
     <Content Include="static\Index.html" />
     <Content Include="style\schedule.css" />
     <Content Include="Web.config" />
