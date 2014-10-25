@@ -23,7 +23,17 @@
                 });
 
                 stage.update();
-             });
+
+                var serviceUrl = 'http://datschedule.apphb.com/game';
+
+                $.get(
+                    serviceUrl,
+                    function (data) {
+                        console.log(data);
+                    }
+                );
+
+            });
   		</script>
   		<link rel="stylesheet" href="../style/schedule.css" type="text/css" />
 	</head>
