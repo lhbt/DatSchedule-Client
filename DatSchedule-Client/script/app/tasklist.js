@@ -5,7 +5,7 @@
     var _tasks = [];
 
     var offsets = { shape: { x: 10, y: 20, spacing: 3 }, text: { x: 15, y: 20, spacing: 4 } };
-    var sizes = { width: 100, height: 15 };
+    var sizes = { width: 150, height: 15 };
     
     var init = function(stage) {
         _stage = stage;
@@ -24,7 +24,7 @@
         _stage.addChild(taskItem);
 
         var taskText = new createjs.Text();
-        taskText.text = task;
+        taskText.text = task.name;
         taskText.x = offsets.text.x;
         taskText.y = (_tasks.length * offsets.text.y) + offsets.text.spacing;
         _stage.addChild(taskText);
