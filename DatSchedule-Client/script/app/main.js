@@ -1,4 +1,4 @@
-﻿define(['app/levels', 'app/timeline', 'app/tasklist', 'easel'], function (levels, timeline, tasklist) {
+﻿define(['app/engine', 'app/levels', 'app/timeline', 'app/tasklist', 'easel'], function (engine, levels, timeline, tasklist) {
 
     var init = function() {
 
@@ -10,20 +10,9 @@
 
         tasklist.Init(stage);
 
-        var circle = new createjs.Shape();
-        circle.graphics.beginFill("red").drawCircle(100, 100, 50);
-        stage.addChild(circle);
-
         stage.update();
 
-        var serviceUrl = 'http://datschedule.apphb.com/game';
-
-        $.get(
-            serviceUrl,
-            function (data) {
-                console.log(data);
-            }
-        );
+        engine.Init();
     };
 
     return {
