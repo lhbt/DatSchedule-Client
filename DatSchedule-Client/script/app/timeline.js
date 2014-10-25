@@ -9,7 +9,24 @@
 
     var sliceSize = measurements.timelineWidth / (hours.end - hours.start + 1);
 
-    var offsets = { shape: { x: sliceSize }, text: { x: sliceSize }, spacing: { x: 4, y: 4 } };
+    var offsets = {
+         shape: {
+              x: sliceSize
+         },
+         text: {
+              x: sliceSize
+         },
+         spacing: {
+             x: 4,
+             y: 4
+         },
+        scheduledTask: {
+            x: 5,
+            y: 20,
+            height: 100,
+            radius: 8
+        }
+    };
     var sizes = { shape: { width: sliceSize } };
 
     var init = function(stage) {
@@ -43,7 +60,6 @@
     var createTimeslot = function(hour) {
         var timeslot = new createjs.Shape();
         timeslot.name = hour;
-        //drawShapeAt(timeslot, hour, measurements.backgroundColor);
         var index = hour - hours.start;
         timeslot.graphics
             .beginStroke('#CDDBDF')
@@ -73,14 +89,23 @@
             return false;
         }
 
-        for (var i = 0; i < task.duration; ++i) {
-            var taskShape = _stage.getChildByName(_nextFreeSlot);
-            drawShapeAt(taskShape, _nextFreeSlot, "#aaffaa");
-            _stage.update();
-            _nextFreeSlot++;
-        }
+        drawScheduledTask(task);
+        _nextFreeSlot += task.duration;
         return true;
     };
+
+    function drawScheduledTask(task) {
+        var x = (nextFreeSlotIndex() * offsets.shape.x) + offsets.scheduledTask.x;
+        var y = measurements.stageHeight - measurements.timelineHeight + offsets.scheduledTask.y;
+        var width = (task.duration * sliceSize) - (2 * offsets.scheduledTask.x);
+
+        var shape = new createjs.Shape();
+        shape.graphics
+            .beginFill(task.colorCode).drawRoundRect(x, y, width, offsets.scheduledTask.height, offsets.scheduledTask.radius)
+            .beginStroke('#999999').drawRoundRect(x, y, width, offsets.scheduledTask.height, offsets.scheduledTask.radius);
+        _stage.addChild(shape);
+        _stage.update();
+    }
 
     function playAudio() {
         document.getElementById("out-of-time").play();
