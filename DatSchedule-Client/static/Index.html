@@ -6,9 +6,28 @@
         <script src="../script/easeljs-0.7.0.min.js"></script>
         <script>
             $(function() {
+
+                var width = 800;
+                var height = 600;
+
                 var stage = new createjs.Stage("demo");
                 var circle = new createjs.Shape();
                 circle.graphics.beginFill("red").drawCircle(0, 0, 50);
+
+                var timelineHeight = 125;
+                var timeline = new createjs.Shape();
+                timeline.graphics.beginFill("#aaaaff").drawRect(0, height - timelineHeight, width, timelineHeight);
+                stage.addChild(timeline);
+
+                var taskListWidth = 200;
+                var taskList = new createjs.Shape();
+                taskList.graphics.beginFill("#ffaaaa").drawRect(0, 0, taskListWidth, height-timelineHeight);
+                stage.addChild(taskList);
+
+                var levelsWidth = 200;
+                var levels = new createjs.Shape();
+                levels.graphics.beginFill("#aaffaa").drawRect(width - levelsWidth, 0, levelsWidth, height - timelineHeight);
+                stage.addChild(levels);
 
                 var dragger = new createjs.Container();
                 dragger.x = dragger.y = 100;
