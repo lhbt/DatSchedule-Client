@@ -46,7 +46,8 @@
         //drawShapeAt(timeslot, hour, measurements.backgroundColor);
         var index = hour - hours.start;
         timeslot.graphics
-            .beginStroke('#000000')
+            .beginStroke('#CDDBDF')
+            .setStrokeStyle(2)
             .moveTo((index * offsets.shape.x)-1, measurements.stageHeight - measurements.timelineHeight)
             .lineTo((index * offsets.shape.x)-1, measurements.stageHeight);
         _stage.addChild(timeslot);
