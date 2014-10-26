@@ -42,7 +42,7 @@
     
     var update = function(data) {
         _levelText.text = data.currentLevel;
-        _scoreText.text = data.score;
+        _scoreText.text = data.totalScore;
         _stage.update();
     };
 
