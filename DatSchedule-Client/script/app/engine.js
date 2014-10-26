@@ -49,6 +49,10 @@
     };
     
     function nightTime() {
+        setTimeout(pauseForDay, 3000);
+    }
+
+    function pauseForDay() {
         timeline.Clear();
         night.SlideOut(dayTime);
     }
