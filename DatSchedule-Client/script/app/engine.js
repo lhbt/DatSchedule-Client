@@ -11,6 +11,7 @@
                 gameId = data.id;
                 populateTaskList(data.currentDay.tasks);
                 timeline.Clear();
+                levels.Reset();
             }
         );
     };
