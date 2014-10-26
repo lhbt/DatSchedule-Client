@@ -23,11 +23,18 @@
 
         _avatarContainer.removeAllChildren();
 
-        var avatar = new createjs.Bitmap(_images[imageName]);
-        avatar.x = 225;
-        avatar.y = 100;
-        _avatarContainer.addChild(avatar);
+        var img = new Image();
+        img.src = _images[imageName];
+        img.onload = imageLoaded;
 
+        _stage.update();
+    }
+
+    function imageLoaded(e) {
+        var bmp = new createjs.Bitmap(e.target);
+        bmp.x = 225;
+        bmp.y = 100;
+        _avatarContainer.addChild(bmp);
         _stage.update();
     }
 
