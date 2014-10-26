@@ -1,4 +1,4 @@
-﻿define(['jquery', 'app/tasklist', 'app/timeline', 'app/levels', 'app/night', 'app/avatar'], function($, tasklist, timeline, levels, night, avatar) {
+﻿define(['jquery', 'app/tasklist', 'app/timeline', 'app/levels', 'app/night', 'app/avatar', 'app/status'], function($, tasklist, timeline, levels, night, avatar, status) {
 
     var gameId;
     var _data;
@@ -45,6 +45,7 @@
                 }
                 levels.Update(data);
                 avatar.Update(data);
+                status.Update(data);
             },
             'json');
     };
