@@ -1,4 +1,4 @@
-﻿define(['app/engine', 'app/levels', 'app/timeline', 'app/tasklist', 'easel'], function (engine, levels, timeline, tasklist) {
+﻿define(['app/engine', 'app/levels', 'app/timeline', 'app/tasklist', 'app/night', 'easel'], function (engine, levels, timeline, tasklist, night) {
 
     var init = function() {
 
@@ -12,6 +12,8 @@
         tasklist.Init(stage);
 
         stage.update();
+
+        night.Init(stage);
 
         engine.Init();
     };

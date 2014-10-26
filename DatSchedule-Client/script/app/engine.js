@@ -1,6 +1,7 @@
-﻿define(['jquery', 'app/tasklist', 'app/timeline', 'app/levels'], function($, tasklist, timeline, levels) {
+﻿define(['jquery', 'app/tasklist', 'app/timeline', 'app/levels', 'app/night'], function($, tasklist, timeline, levels, night) {
 
     var gameId;
+    var _data;
 
     var init = function() {
         var serviceUrl = 'http://datschedule.apphb.com/game';
@@ -31,15 +32,24 @@
         $.post(serviceUrl,
             JSON.stringify(task),
             function (data) {
+                _data = data;
                 if (data.gameState.dayIsOver) {
-                    populateTaskList(data.currentDay.tasks);
-                    timeline.Clear();
+                    night.SlideIn(nightTime);
                 }
                 levels.Update(data);
             },
             'json');
     };
     
+    function nightTime() {
+        timeline.Clear();
+        night.SlideOut(dayTime);
+    }
+
+    function dayTime() {
+        populateTaskList(_data.currentDay.tasks);
+    }
+
     var populateTaskList = function(tasks) {
         tasklist.Clear();
         for (var i in tasks) {

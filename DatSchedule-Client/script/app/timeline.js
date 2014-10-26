@@ -124,6 +124,7 @@
         }
         _scheduledTasks = [];
         _nextFreeSlot = hours.start;
+        _stage.update();
     };
 
     return {
