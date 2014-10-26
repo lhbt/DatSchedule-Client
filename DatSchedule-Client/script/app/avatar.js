@@ -32,14 +32,16 @@
     }
 
     var update = function(data) {
-        if (data.gameState.stressLevel < 50) {
-            setAvatar("stressed");
-        }
-        else if (data.gameState.fatigueLevel < 50) {
-            setAvatar("tired");
-        }
-        else if (data.gameState.hungerLevel < 50) {
-            setAvatar("hungry");
+        if (data.gameState.stressLevel < 50 || data.gameState.fatigueLevel < 50 || data.gameState.hungerLevel < 50) {
+            if (data.gameState.stressLevel <= data.gameState.fatigueLevel && data.gameState.stressLevel <= data.gameState.hungerLevel) {
+                setAvatar("stressed");
+            } else if (data.gameState.fatigueLevel <= data.gameState.stressLevel && data.gameState.fatigueLevel <= data.gameState.hungerLevel) {
+                setAvatar("tired");
+            } else if (data.gameState.hungerLevel <= data.gameState.stressLevel && data.gameState.hungerLevel <= data.gameState.fatigueLevel) {
+                setAvatar("hungry");
+            }
+        } else {
+            setAvatar("happy");
         }
     };
 
