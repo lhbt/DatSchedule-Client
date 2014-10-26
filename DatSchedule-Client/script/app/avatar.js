@@ -38,8 +38,8 @@
         }
 
         var bmp = new createjs.Bitmap(e.target);
-        bmp.x = 225;
-        bmp.y = 100;
+        bmp.x = 400 - bmp.image.naturalWidth / 2;
+        bmp.y = 300 - bmp.image.naturalHeight / 2;
         _avatarContainer.addChild(bmp);
         _stage.update();
     }
