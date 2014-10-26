@@ -11,6 +11,8 @@
             function (data) {
                 gameId = data.id;
                 populateTaskList(data.currentDay.tasks);
+                timeline.Clear();
+                levels.Reset();
             }
         );
     };
@@ -33,6 +35,11 @@
             JSON.stringify(task),
             function (data) {
                 _data = data;
+                if (data.gameOver) {
+                    alert("OH NOES! You have daed of " + levels.GetCauseOfDeath(data).join(' '));
+                    init();
+                    return;
+                }
                 if (data.gameState.dayIsOver) {
                     night.SlideIn(nightTime);
                 }

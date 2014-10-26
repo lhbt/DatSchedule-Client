@@ -30,8 +30,28 @@
         levelbar.UpdateBar("Hunger", data.gameState.hungerLevel);
     };
 
+    var reset = function() {
+        update({ gameState: { stressLevel: 100, fatigueLevel: 100, hungerLevel: 100 } });
+    };
+
+    var getCauseOfDeath = function(data) {
+        var message = [];
+        if (data.gameState.stressLevel <= 0) {
+            message.push("stress");
+        }
+        if (data.gameState.fatigueLevel <= 0) {
+            message.push("fatigue");
+        }
+        if (data.gameState.hungerLevel <= 0) {
+            message.push("hunger");
+        }
+        return message;
+    };
+
     return {
         Init: init,
-        Update: update
+        Update: update,
+        Reset: reset,
+        GetCauseOfDeath: getCauseOfDeath
     };
 });
