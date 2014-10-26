@@ -67,6 +67,7 @@
     <Content Include="script\lib\require.js" />
     <Content Include="script\bootstrap.js" />
     <Content Include="game.html" />
+    <Content Include="style\main.css" />
     <Content Include="style\schedule.css" />
     <Content Include="Web.config" />
   </ItemGroup>
