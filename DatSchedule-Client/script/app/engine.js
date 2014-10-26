@@ -1,4 +1,4 @@
-﻿define(['jquery', 'app/tasklist', 'app/timeline', 'app/levels', 'app/night', 'app/avatar'], function($, tasklist, timeline, levels, night, avatar) {
+﻿define(['jquery', 'app/tasklist', 'app/timeline', 'app/levels', 'app/night', 'app/avatar', 'app/gameover'], function($, tasklist, timeline, levels, night, avatar, gameover) {
 
     var gameId;
     var _data;
@@ -36,8 +36,7 @@
             function (data) {
                 _data = data;
                 if (data.gameOver) {
-                    alert("OH NOES! You have daed of " + levels.GetCauseOfDeath(data).join(' '));
-                    init();
+                    gameover.Show(data);
                     return;
                 }
                 if (data.gameState.dayIsOver) {

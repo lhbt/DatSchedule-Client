@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="content\dat_schedule_logo.jpg" />
+    <Content Include="content\death.png" />
     <Content Include="content\night.jpg" />
     <Content Include="content\happy.png" />
     <Content Include="content\hungry.png" />
@@ -51,6 +52,7 @@
     <Content Include="media\out-of-time.mp3" />
     <Content Include="script\app\avatar.js" />
     <Content Include="script\app\engine.js" />
+    <Content Include="script\app\gameover.js" />
     <Content Include="script\app\helpers.js" />
     <Content Include="script\app\levelbar.js" />
     <Content Include="script\app\levels.js" />
