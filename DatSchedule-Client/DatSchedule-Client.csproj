@@ -66,7 +66,7 @@
     <Content Include="script\lib\jquery-1.11.1.min.js" />
     <Content Include="script\lib\require.js" />
     <Content Include="script\bootstrap.js" />
-    <Content Include="static\Index.html" />
+    <Content Include="game.html" />
     <Content Include="style\schedule.css" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -74,6 +74,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="start.html" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
