@@ -99,6 +99,7 @@
         _stage.addChild(shape);
 
         var text = new createjs.Text();
+        text.lineWidth = width - 2 * offsets.scheduledTask.x;
         text.font = _taskFont;
         text.text = task.name;
         text.name = task.name + '_text';
