@@ -6,19 +6,25 @@
     var _linearGradientColors = ["#00FF00", "#FFFF00", "#FF0000"];
     var _linearGradientThresholds = [0, 0.8, 1];
 
+    var _font = "14px Candara";
+
+    var _parentXPosition;
+
     var sizes = {
         x: 20,
         y: 200,
         radius: 10
     };
 
-    var createBar = function(stage, name) {
+    var createBar = function(stage, name, parentXPosition) {
         _stage = stage;
+        _parentXPosition = parentXPosition;
 
         var bartext = new createjs.Text();
-        bartext.x = 630 + (_levelBars * 50);
+        bartext.x = _parentXPosition + 30 + (_levelBars * 50);
         bartext.y = 300;
         bartext.text = name;
+        bartext.font = _font;
         _stage.addChild(bartext);
 
         var bar = new createjs.Shape();
@@ -45,7 +51,7 @@
 
     var updateBar = function (name, value) {
         var bar = _stage.getChildByName(name);
-        var x = 630 + (bar.index * 50) + 7;
+        var x = _parentXPosition + 30 + (bar.index * 50) + 7;
         var y = 290 - (sizes.y * value / 100);
         var width = sizes.x;
         var height = sizes.y * value / 100;
