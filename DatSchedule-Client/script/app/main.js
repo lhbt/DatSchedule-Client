@@ -23,6 +23,10 @@
 
         var name = prompt("Enter your name: ");
 
+        while (name == "" || name == null) {
+            name = prompt("Enter your name: ");
+        }
+
         engine.Init(name);
 
 
