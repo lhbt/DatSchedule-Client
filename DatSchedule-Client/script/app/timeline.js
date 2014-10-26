@@ -103,6 +103,7 @@
 
         var gradient = new createjs.Shape();
         gradient.alpha = 0.1;
+        gradient.name = task.name + '_gradient';
         gradient.graphics
             .beginLinearGradientFill(_linearGradientColors, _linearGradientThresholds, 0, y, 0, y + offsets.scheduledTask.height)
             .drawRoundRect(x, y, width, offsets.scheduledTask.height, offsets.scheduledTask.radius);
@@ -132,6 +133,8 @@
             _stage.removeChild(shape);
             var text = _stage.getChildByName(_scheduledTasks[i].name + '_text');
             _stage.removeChild(text);
+            var gradient = _stage.getChildByName(_scheduledTasks[i].name + '_gradient');
+            _stage.removeChild(gradient);
         }
         _scheduledTasks = [];
         _nextFreeSlot = hours.start;
