@@ -1,5 +1,8 @@
 ﻿define(['app/measurements', 'easel'], function(measurements) {
 
+    var _linearGradientColors = ["#000000", "#FFFFFF", "#000000"];
+    var _linearGradientThresholds = [0, 0.1, 1];
+
     var _taskFont = "14px Candara";
     var _headerFont = "24px Candara";
 
@@ -57,6 +60,7 @@
         registerCursorEvents(container);
 
         createTaskItem(task, container);
+        createGradientLayer(task, container);
         createTaskText(task, container);
         createDurationText(task, container);
         var taskDisableLayer = createDisableLayer(task, container);
@@ -88,6 +92,16 @@
             .beginFill(task.colorCode).drawRoundRect(offsets.shape.x, calculateItemY(), sizes.width, sizes.height, offsets.shape.radius)
             .beginStroke('#999999').drawRoundRect(offsets.shape.x, calculateItemY(), sizes.width, sizes.height, offsets.shape.radius);
         container.addChild(taskItem);
+    }
+
+    function createGradientLayer(task, container) {
+        var gradient = new createjs.Shape();
+        gradient.alpha = 0.1;
+        gradient.graphics
+            .beginLinearGradientFill(_linearGradientColors, _linearGradientThresholds, 0, calculateItemY(), 0, calculateItemY() + sizes.height)
+            .drawRoundRect(offsets.shape.x, calculateItemY(), sizes.width, sizes.height, offsets.shape.radius);
+        container.addChild(gradient);
+
     }
 
     function createTaskText(task, container) {

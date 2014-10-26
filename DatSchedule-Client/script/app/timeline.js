@@ -1,5 +1,8 @@
 ﻿define(['app/measurements'], function(measurements) {
 
+    var _linearGradientColors = ["#000000", "#FFFFFF", "#000000"];
+    var _linearGradientThresholds = [0, 0.1, 1];
+
     var _taskFont = "14px Candara";
 
     var _stage;
@@ -97,6 +100,13 @@
             .beginFill(task.colorCode).drawRoundRect(x, y, width, offsets.scheduledTask.height, offsets.scheduledTask.radius)
             .beginStroke('#999999').drawRoundRect(x, y, width, offsets.scheduledTask.height, offsets.scheduledTask.radius);
         _stage.addChild(shape);
+
+        var gradient = new createjs.Shape();
+        gradient.alpha = 0.1;
+        gradient.graphics
+            .beginLinearGradientFill(_linearGradientColors, _linearGradientThresholds, 0, y, 0, y + offsets.scheduledTask.height)
+            .drawRoundRect(x, y, width, offsets.scheduledTask.height, offsets.scheduledTask.radius);
+        _stage.addChild(gradient);
 
         var text = new createjs.Text();
         text.lineWidth = width - 2 * offsets.scheduledTask.x;
