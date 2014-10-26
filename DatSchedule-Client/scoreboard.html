@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Scores</title>
+    <link rel="stylesheet" href="style/main.css" type="text/css" />
+    <script src="script/lib/jquery-1.11.1.min.js"></script>
+    <script>
+        $(function () {
+
+            var serviceUrl = "http://datschedule.apphb.com/scores";
+
+            $.get(serviceUrl,
+                function (data) {
+
+                    for (var i in data) {
+
+                        var score = $(".template").clone();
+                        score.html(score.html().replace("%NAME", data[i].name));
+                        score.html(score.html().replace("%SCORE", data[i].score));
+                        score.removeClass("template");
+                        score.appendTo($("#scores"));
+
+                    }
+                });
+        });
+    </script>
+</head>
+<body>
+    <table id="scores">
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Score
+            </th>
+        </tr>
+        <tr class="template">
+            <td>%NAME</td>
+            <td>%SCORE</td>
+        </tr>
+    </table>
+</body>
+</html>

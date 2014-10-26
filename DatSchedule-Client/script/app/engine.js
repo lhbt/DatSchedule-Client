@@ -3,8 +3,8 @@
     var gameId;
     var _data;
 
-    var init = function() {
-        var serviceUrl = 'http://datschedule.apphb.com/game';
+    var init = function(name) {
+        var serviceUrl = 'http://datschedule.apphb.com/game/' + encodeURIComponent(name);
 
         $.get(
             serviceUrl,

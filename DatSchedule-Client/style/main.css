@@ -30,3 +30,7 @@
     font-style: italic;
     display: inline;
 }
+
+tr.template {
+    display: none;
+}

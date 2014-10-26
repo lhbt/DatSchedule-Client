@@ -21,7 +21,11 @@
 
         gameover.Init(stage);
 
-        engine.Init();
+        var name = prompt("Enter your name: ");
+
+        engine.Init(name);
+
+
     };
 
     return {

@@ -50,6 +50,7 @@
     <Content Include="content\stressed.png" />
     <Content Include="content\tired.png" />
     <Content Include="media\out-of-time.mp3" />
+    <Content Include="scoreboard.html" />
     <Content Include="script\app\avatar.js" />
     <Content Include="script\app\engine.js" />
     <Content Include="script\app\gameover.js" />
