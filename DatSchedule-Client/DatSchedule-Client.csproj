@@ -57,6 +57,7 @@
     <Content Include="script\app\main.js" />
     <Content Include="script\app\measurements.js" />
     <Content Include="script\app\night.js" />
+    <Content Include="script\app\status.js" />
     <Content Include="script\app\tasklist.js" />
     <Content Include="script\app\timeline.js" />
     <Content Include="script\lib\easeljs-0.7.0.min.js" />
