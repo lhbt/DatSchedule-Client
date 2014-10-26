@@ -10,6 +10,7 @@
             function (data) {
                 gameId = data.id;
                 populateTaskList(data.currentDay.tasks);
+                timeline.Clear();
             }
         );
     };
@@ -31,6 +32,11 @@
         $.post(serviceUrl,
             JSON.stringify(task),
             function (data) {
+                if (data.gameOver) {
+                    alert("OH NOES! You have daed of " + levels.GetCauseOfDeath(data).join(' '));
+                    init();
+                    return;
+                }
                 if (data.gameState.dayIsOver) {
                     populateTaskList(data.currentDay.tasks);
                     timeline.Clear();
