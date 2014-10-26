@@ -66,3 +66,20 @@ canvas {
     height: 57px;
     background-image: url(../content/dat_schedule_logo.jpg)
 }
+
+.restart-link {
+    margin: auto;
+    position: absolute;
+    top: 300px; left: 200px; bottom: 0; right: 0;    
+}
+
+.scoreboard-link {
+    margin: auto;
+    position: absolute;
+    top: 400px; left: 200px; bottom: 0; right: 0;    
+}
+
+a {
+    font-family: Arial;
+    font-size: 20px;
+}

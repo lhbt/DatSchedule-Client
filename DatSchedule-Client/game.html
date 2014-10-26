@@ -3,13 +3,22 @@
     <head>
         <title>Harry Gall Presents...</title>
         <script data-main="../script/bootstrap" src="../script/lib/require.js"></script>
-  		<link rel="stylesheet" href="../style/schedule.css" type="text/css" />
+        <link rel="stylesheet" href="../style/schedule.css" type="text/css" />
+        <link rel="stylesheet" href="../style/main.css" type="text/css" />
 	</head>
     <body>
         <div id="heading"></div>
-        <canvas id="demo" width="800" height="600">
-            <marquee>Your browser does not support canvas! :(</marquee>
-        </canvas>
+        <div>
+            <canvas id="demo" width="800" height="600">
+                <marquee>Your browser does not support canvas! :(</marquee>
+            </canvas>
+        </div>
+        <div class="restart-link">
+            <a href="./game.html">Restart</a>
+        </div>
+        <div class="scoreboard-link">
+            <a href="./scoreboard.html">High Scores</a>
+        </div>
         <audio src="../media/out-of-time.mp3" id="out-of-time" preload="auto"></audio>
     </body>
 </html>
