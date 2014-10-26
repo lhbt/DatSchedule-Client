@@ -2,6 +2,8 @@
 
     var _stage;
 
+    var _currentImagePath;
+
     var _avatarContainer;
     var _images = {
         "happy": "../../content/happy.png",
@@ -20,7 +22,7 @@
     };
     
     var setAvatar = function (imageName) {
-
+        _currentImagePath = _images[imageName].replace("../../", "");
         _avatarContainer.removeAllChildren();
 
         var img = new Image();
@@ -31,6 +33,10 @@
     }
 
     function imageLoaded(e) {
+        if (e.currentTarget.currentSrc.indexOf(_currentImagePath) <= 0) {
+            return;
+        }
+
         var bmp = new createjs.Bitmap(e.target);
         bmp.x = 225;
         bmp.y = 100;
