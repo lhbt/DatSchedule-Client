@@ -40,7 +40,7 @@
                     return;
                 }
                 if (data.gameState.dayIsOver) {
-                    night.SlideIn(nightTime);
+                    night.SlideIn(nightTime, data.message);
                 }
                 levels.Update(data);
                 avatar.Update(data);

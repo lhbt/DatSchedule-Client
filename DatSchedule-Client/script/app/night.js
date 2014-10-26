@@ -8,10 +8,12 @@
     var _moreText;
 
     var _font = "48px Candara";
-    var _moreFont = "64px Candara";
+    var _moreFont = "32px Candara";
 
     var _linearGradientColors = ["#252629", "#131521"];
     var _linearGradientThresholds = [0, 1];
+
+    var _message;
 
     var init = function(stage) {
         _stage = stage;
@@ -23,7 +25,8 @@
         _stage.addChild(_nightPanel);
     }
 
-    var slideIn = function(callback) {
+    var slideIn = function (callback, message) {
+        _message = message;
         _stage.removeChild(_nightPanel);
         _stage.addChild(_nightPanel);
         slideInHelper(callback);
@@ -49,20 +52,21 @@
         _text.font = _font;
         _text.color = "#444444";
         _text.text = "It's night time, get some rest";
-        _text.x = 150;
-        _text.y = 200;
+        _text.x = 100;
+        _text.y = 100;
         _stage.addChild(_text);
         _stage.update();
-        setTimeout(showMoreText, 2000);
+        setTimeout(showMoreText, 500);
     }
 
     function showMoreText() {
         _moreText = new createjs.Text();
         _moreText.font = _moreFont;
         _moreText.color = "#555555";
-        _moreText.text = "Too late.";
-        _moreText.x = 150;
-        _moreText.y = 400;
+        _moreText.text = _message;
+        _moreText.x = 100;
+        _moreText.y = 200;
+        _moreText.lineWidth = measurements.stageWidth - 200;
         _stage.addChild(_moreText);
         _stage.update();
     }
